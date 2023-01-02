@@ -1,0 +1,102 @@
+import java.awt.*;
+import java.awt.event.*;
+
+
+public class Calc extends Frame implements ActionListener[
+
+	String str[] = {"7", "8", "9", "+", 
+		"4", "5", "6", "-", 
+		"1", "2", "3", "*", 
+		"0", "%", "/", "="};
+	Button bt[];
+	Button myb;
+TextField tf;
+
+    public static void main(String[] args) {
+		Calc winCalc = new Calc();
+    }
+
+
+    Calc(){
+		super("電　卓");
+		setSize(800 ,  600);
+		setLayout( new BorderLayout(5 ,  5)  );
+
+		myb =new Button("ボタンA");
+		add(myb, BorderLayout.SOUTH);
+
+		myb.setFont(new Font("Arial", Font.BOLD, 36));
+		myb.setBackground( new Color(255, 192, 0) );
+		myb.setForeground( Color.BLUE );
+ tf= new TextField ();
+add(tf,BorderLayout.NORTH);
+tf.setForeground( Color.yellow );
+tf.setFont(new Font("Arial", Font.BOLD, 30));
+
+Panel p;
+p=new Panel();
+add(p,BorderLayout.CENTER);
+p.setBackground(Color pink);
+
+p.setLayput(new GridLayout(4 ,4) );
+
+bt= new Button[16];
+
+
+
+int i;
+for(i=0;i<16; i++){
+   
+b1[i]= new Button(str[i]);
+ p.add( bt[i]);
+ bt[i].setFont(new Font("Arial", Font.BOLD, 30));
+ bt[i].addActionListener(this );
+ bt[1].setBackground( new Color(  255 ,0    ,  255*i/16) );
+}
+
+
+//        myb.addActionListener(this);
+ /////////////////////////////////////////
+		setVisible(true);
+		addWindowListener(new Ad());
+	}// end of コンストラクタ Cals()
+
+
+public void actionPerformed(ActionEvent e){
+
+    System.out.println("押したよ");
+   object obj;
+   obj= e.getSorce();
+    int i; 
+     for(i ==0; i<16  ;i++){
+     if(obj ==bt[0]){
+         break;       
+        }
+    }
+
+}
+
+     System.out.println(i +"番のボタンが押したよ");
+   tf.setText( tf.getText() + str[i] );
+
+  if(i ==3){
+     String s;
+      s=tf.getText();
+       int z ;
+         z=Integer.parseInt( s );
+
+      tf.setText( tf.getText() + str[i] );
+     }
+       else{
+               tf.setText( tf.getText() + str[i] );
+       }
+
+ /////////////////////////////////////////
+}// end of Calc Class
+
+class Ad extends WindowAdapter
+{
+    public void windowClosing(WindowEvent e){
+       System.exit(0);
+    }
+}
